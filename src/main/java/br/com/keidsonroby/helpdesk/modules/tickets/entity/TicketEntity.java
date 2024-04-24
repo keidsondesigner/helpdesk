@@ -2,7 +2,8 @@ package br.com.keidsonroby.helpdesk.modules.tickets.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,9 +36,7 @@ public class TicketEntity {
   @NotBlank(message = "O campo [status] é obrigatório.")
   private String status;
 
-  @NotNull(message = "O campo [data], não foi informado.")
-  @NotBlank(message = "O campo [data] é obrigatório.")
-  @Column(name = "created_at")
+  @CreationTimestamp
   private LocalDateTime createdAt;
 
 }
