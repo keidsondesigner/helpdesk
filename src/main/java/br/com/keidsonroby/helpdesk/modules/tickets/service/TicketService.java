@@ -31,4 +31,8 @@ public class TicketService {
     var ticket = this.ticketRepository.findByTitulo(titulo);
     return ticket;
   }
+
+  public TicketEntity atualizar(TicketEntity ticketEntity) {
+    return this.ticketRepository.save(ticketEntity);
+  }
 }
