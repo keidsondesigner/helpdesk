@@ -1,5 +1,7 @@
 package br.com.keidsonroby.helpdesk.modules.tickets.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,10 @@ public class TicketService {
 
   public TicketEntity salvar(TicketEntity ticketEntity) {
     return this.ticketRepository.save(ticketEntity);
+  }
+
+  public List<TicketEntity> listaTickets() {
+    var ticket = this.ticketRepository.findAll();
+    return ticket;
   }
 }
