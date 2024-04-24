@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,12 @@ public class TicketController {
   public ResponseEntity<Object> getAllTickets() {
     var tickets = this.ticketService.listaTickets();
     return ResponseEntity.ok(tickets);
+  }
+
+  @GetMapping("/{id}")
+  public ResponseEntity<Object> getTicketPorId(@PathVariable Integer id) {
+    var ticket = this.ticketService.buscaPorId(id);
+    return ResponseEntity.ok(ticket);
   }
 
 }
