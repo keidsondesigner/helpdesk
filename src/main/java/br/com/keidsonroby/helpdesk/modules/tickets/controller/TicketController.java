@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.keidsonroby.helpdesk.modules.tickets.entity.TicketEntity;
@@ -39,6 +40,12 @@ public class TicketController {
   @GetMapping("/{id}")
   public ResponseEntity<Object> getTicketPorId(@PathVariable Integer id) {
     var ticket = this.ticketService.buscaPorId(id);
+    return ResponseEntity.ok(ticket);
+  }
+
+  @GetMapping("/busca")
+  public ResponseEntity<Object> getTicketPorTitulo(@RequestParam String titulo) {
+    var ticket = this.ticketService.buscaPorTitulo(titulo);
     return ResponseEntity.ok(ticket);
   }
 
