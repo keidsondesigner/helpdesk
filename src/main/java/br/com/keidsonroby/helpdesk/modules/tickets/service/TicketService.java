@@ -22,4 +22,8 @@ public class TicketService {
     var ticket = this.ticketRepository.findAll();
     return ticket;
   }
+
+  public TicketEntity buscaPorId(Integer id) {
+    return this.ticketRepository.findById(id).get();
+  }
 }
