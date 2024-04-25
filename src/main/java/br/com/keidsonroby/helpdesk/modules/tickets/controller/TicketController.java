@@ -3,6 +3,7 @@ package br.com.keidsonroby.helpdesk.modules.tickets.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +58,13 @@ public class TicketController {
     }
     var ticketAtualizado = this.ticketService.atualizar(ticketEntity);
     return ResponseEntity.ok(ticketAtualizado);
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Object> deleteTicket(@PathVariable Integer id) {
+    var ticket = this.ticketService.buscaPorId(id);
+    this.ticketService.deletaTicket(ticket);
+    return ResponseEntity.ok("Item deletado" + " " + ticket);
   }
 
 }
