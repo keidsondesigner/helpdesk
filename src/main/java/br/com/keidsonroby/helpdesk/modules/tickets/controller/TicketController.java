@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +48,15 @@ public class TicketController {
   public ResponseEntity<Object> getTicketPorTitulo(@RequestParam String titulo) {
     var ticket = this.ticketService.buscaPorTitulo(titulo);
     return ResponseEntity.ok(ticket);
+  }
+
+  @PutMapping
+  public ResponseEntity<Object> putTicket(@RequestBody TicketEntity ticketEntity, BindingResult bindingResult) {
+    if(bindingResult.hasErrors()) {
+      return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
+    }
+    var ticketAtualizado = this.ticketService.atualizar(ticketEntity);
+    return ResponseEntity.ok(ticketAtualizado);
   }
 
 }
