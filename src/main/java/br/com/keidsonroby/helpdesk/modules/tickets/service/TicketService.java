@@ -35,4 +35,8 @@ public class TicketService {
   public TicketEntity atualizar(TicketEntity ticketEntity) {
     return this.ticketRepository.save(ticketEntity);
   }
+
+  public void deletaTicket(TicketEntity ticketEntity) {
+    this.ticketRepository.delete(ticketEntity);
+  }
 }
