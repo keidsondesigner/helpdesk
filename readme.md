@@ -125,4 +125,7 @@ Observação: Nenhum dado precisa ser enviado no corpo da requisição para essa
 - Edite a configuração do banco de dados (por exemplo, application.properties) para especificar os detalhes de conexão ao PostgreSQL.
 - Compilação e execução:
 - Execute o comando mvn clean install para compilar o projeto.
-- Execute a classe principal (geralmente com.example.ProjetoApplication) usando o comando java -jar target/projeto-0.0.1-SNAPSHOT.jar.
+- Execute a classe principal (geralmente com.example.ProjetoApplication) usando o comando:
+```
+java -jar target/helpdesk-0.0.1-SNAPSHOT.jar
+```
